@@ -4,7 +4,7 @@
   "description": "Automated checks for the portfolio frontend",
   "scripts": {
     "test": "npm run lint:html && node portfolio.check.js",
-    "lint:html": "html-validate ../frontend/index.html"
+    "lint:html": "html-validate -c .htmlvalidate.json ../frontend/index.html"
   },
   "devDependencies": {
     "@playwright/test": "1.56.0",

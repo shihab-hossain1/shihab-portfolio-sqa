@@ -1,5 +1,7 @@
 # Shihab Hossain — SQA Portfolio (redesign)
 
+[![Portfolio tests](https://github.com/shihab-hossain1/shihab-portfolio-sqa/actions/workflows/portfolio-tests.yml/badge.svg?branch=main)](https://github.com/shihab-hossain1/shihab-portfolio-sqa/actions/workflows/portfolio-tests.yml)
+
 **🔗 Live site: https://shihab-portfolio-sqa-frontend.vercel.app/**
 
 The SQA-focused version of my portfolio: QA case studies (DiagnoCare, Playwright + Postman/Newman),

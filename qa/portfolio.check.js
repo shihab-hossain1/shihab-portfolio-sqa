@@ -64,7 +64,7 @@ async function axe(page, label) {
 
   // images
   const imgs = await page.evaluate(async () => {
-    const list = [...document.images];
+    const list = [...document.images].filter(i => new URL(i.src).origin === location.origin);
     for (const img of list) { img.loading = 'eager'; img.scrollIntoView(); await img.decode().catch(() => {}); }
     return list.map(i => ({ alt: i.alt, w: i.getAttribute('width'), h: i.getAttribute('height'), nat: i.naturalWidth, src: i.currentSrc }));
   });
@@ -91,8 +91,13 @@ async function axe(page, label) {
   const y = await page.evaluate(() => window.scrollY);
   check('ArrowDown performs normal small scroll (not slide jump)', y > 0 && y < 200, 'scrollY=' + y);
 
-  // CV hidden while PDF missing
-  check('CV buttons hidden when PDF absent', await page.locator('#cvLink').isHidden());
+  // CV download is shown and the PDF is really served
+  const cv = await page.evaluate(async () => { const r = await fetch('assets/Shihab-Hossain-CV.pdf', { method: 'HEAD' }); return r.status + ' ' + (r.headers.get('content-type') || ''); });
+  check('CV buttons visible and PDF served', (await page.locator('#cvLink').isVisible()) && /^200 .*pdf/.test(cv), cv);
+
+  // Sample bug report has the essential fields
+  const bugFields = await page.$$eval('#bug-report dt', d => d.map(x => x.textContent.trim()));
+  check('sample bug report has steps, expected, actual and regression tests', ['Steps to reproduce', 'Expected result', 'Actual result', 'Regression tests'].every(f => bugFields.includes(f)), bugFields.join(', '));
 
   await page.screenshot({ path: OUT + 'desktop-full.png', fullPage: true });
 

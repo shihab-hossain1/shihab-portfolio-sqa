@@ -122,6 +122,7 @@
           <li><a href="https://github.com/shihab-hossain1/DiagnoCare_2.0" target="_blank" rel="noopener">Repository<span class="sr-only"> (opens in a new tab)</span> ↗</a></li>
           <li><a href="https://github.com/shihab-hossain1/DiagnoCare_2.0/blob/master/docs/test-cases.md" target="_blank" rel="noopener">All 57 test cases<span class="sr-only"> (opens in a new tab)</span> ↗</a></li>
           <li><a href="https://github.com/shihab-hossain1/DiagnoCare_2.0/issues?q=is%3Aissue" target="_blank" rel="noopener">Bug reports (GitHub Issues)<span class="sr-only"> (opens in a new tab)</span> ↗</a></li>
+          <li><a href="#bug-report">Sample bug report ↓</a></li>
         </ul>
       </div>
 
@@ -171,6 +172,29 @@
             <li><span class="sev sev-low">Low</span><div><b>Mobile menu never opened</b>; dead links; unverifiable homepage claims. Fix: menu toggle added, links checked, only true numbers shown.</div></li>
           </ul>
           <p class="fine">3 of the 8 are security issues (data exposure and access control). Each fix is guarded by regression tests.</p>
+        </div>
+
+        <div class="case-block" id="bug-report">
+          <h4>Sample bug report</h4>
+          <article class="bug-card" aria-labelledby="bug-title">
+            <div class="bug-tags"><span class="sev sev-high">High</span><span class="bug-pill">P1</span><span class="bug-pill">Security · access control</span><span class="bug-pill bug-fixed">Fixed</span></div>
+            <h5 id="bug-title" class="bug-title">Any logged-in user can open another patient's booking by changing the ID in the URL</h5>
+            <dl class="bug-fields">
+              <div><dt>Environment</dt><dd>DiagnoCare 2.0 (Django), local development build, Chrome</dd></div>
+              <div><dt>Preconditions</dt><dd>Two patient accounts: Patient A has a booking; you are logged in as Patient B.</dd></div>
+              <div class="bug-wide"><dt>Steps to reproduce</dt><dd><ol>
+                <li>Log in as Patient A, create a booking and note its ID in the URL: <code>/booking/&lt;id&gt;/</code></li>
+                <li>Log out, then log in as Patient B.</li>
+                <li>Open <code>/booking/&lt;Patient A's id&gt;/</code> directly in the address bar.</li>
+              </ol></dd></div>
+              <div><dt>Expected result</dt><dd><b class="bug-ok">404 Not Found.</b> Patient B must not see Patient A's booking (TC-SEC-04).</dd></div>
+              <div><dt>Actual result</dt><dd><b class="bug-bad">The page loads</b> and shows Patient A's booking, including their phone number and address.</dd></div>
+              <div class="bug-wide"><dt>Impact</dt><dd>Personal data exposure: any account could read other patients' bookings just by trying different IDs.</dd></div>
+              <div><dt>Fix</dt><dd>Only the booking's patient, its diagnostic centre or an admin can open it; everyone else gets a 404.</dd></div>
+              <div><dt>Regression tests</dt><dd><code>test_other_patient_cannot_view</code>, <code>test_other_center_cannot_view</code>, <code>test_anonymous_is_sent_to_login</code> — passing</dd></div>
+            </dl>
+          </article>
+          <p class="fine">Built from the DiagnoCare README defect list, test case TC-SEC-04 and <code>bookings/tests.py</code>.</p>
         </div>
 
         <div class="case-block">
@@ -463,6 +487,7 @@ npx newman run postman/reqres-collection.json \
 <footer class="site-footer">
   <div class="container footer-inner">
     <p>© <span id="year">2026</span> Shihab Hossain</p>
+    <p><a class="footer-badge" href="https://github.com/shihab-hossain1/shihab-portfolio-sqa/actions/workflows/portfolio-tests.yml" target="_blank" rel="noopener"><img src="https://github.com/shihab-hossain1/shihab-portfolio-sqa/actions/workflows/portfolio-tests.yml/badge.svg?branch=main" width="140" height="20" alt="Portfolio tests status (opens in a new tab)"></a></p>
     <p><a href="#main">Back to top ↑</a></p>
   </div>
 </footer>
