@@ -1,5 +1,7 @@
 # Shihab Hossain — SQA Portfolio (redesign)
 
+**🔗 Live site: https://shihab-portfolio-sqa-frontend.vercel.app/**
+
 The SQA-focused version of my portfolio: QA case studies (DiagnoCare, Playwright + Postman/Newman),
 verified test evidence, accessible navy/teal design, and an automated `qa/` test suite.
 The original design lives in [shihab-portfolio](https://github.com/shihab-hossain1/shihab-portfolio).
