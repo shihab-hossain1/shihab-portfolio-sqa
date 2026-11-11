@@ -101,6 +101,18 @@ async function axe(page, label) {
 
   await page.screenshot({ path: OUT + 'desktop-full.png', fullPage: true });
 
+  // ---------- Course carousel ----------
+  const cardCount = await page.$$eval('#courses ~ .cs .cs-card', c => c.length);
+  const activeTitle = () => page.$eval('.cs .cs-card.is-active h4', e => e.textContent);
+  const firstCard = await activeTitle();
+  await page.click('.cs .cs-next');
+  const secondCard = await activeTitle();
+  await page.click('.cs .cs-prev');
+  check('course carousel has 4 cards and the arrows change the card', cardCount === 4 && secondCard !== firstCard && (await activeTitle()) === firstCard, cardCount + ' cards');
+  check('hidden course cards are not reachable by keyboard', (await page.$$eval('.cs .cs-card[aria-hidden="true"]', cs => cs.filter(c => !c.inert).length)) === 0);
+  await page.click('.cs .cs-pause');
+  check('course carousel can be paused', (await page.getAttribute('.cs .cs-pause', 'aria-label')) === 'Play automatic slide changes');
+
   // ---------- Contact form ----------
   await page.locator('#contact').scrollIntoViewIfNeeded();
   await page.click('#sendBtn');
@@ -190,6 +202,9 @@ async function axe(page, label) {
   check('reduced motion: no reveal animations applied', (await page.locator('.reveal').count()) === 0);
   const sb = await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior);
   check('reduced motion: smooth scroll disabled', sb === 'auto', sb);
+  const startCard = await page.$eval('.cs .cs-card.is-active', e => e.getAttribute('aria-label'));
+  await page.waitForTimeout(5200);
+  check('reduced motion: no automatic slide changes', startCard === (await page.$eval('.cs .cs-card.is-active', e => e.getAttribute('aria-label'))));
   await ctx.close();
 
   // ---------- JavaScript disabled ----------

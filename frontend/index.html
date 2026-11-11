@@ -59,6 +59,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#courses">Courses</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -438,6 +439,47 @@ npx newman run postman/reqres-collection.json \
         </ul>
       </section>
     </div>
+
+    <h3 class="subhead" id="courses">Courses &amp; training</h3>
+    <section class="cs" data-carousel aria-roledescription="carousel" aria-label="Courses and training">
+      <div class="cs-track">
+          <article class="cs-card" aria-roledescription="slide" aria-label="1 of 4: Software Quality Assurance, Ostad">
+            <div class="cs-top"><span class="cs-mono" aria-hidden="true">OS</span><span class="cs-status review">In progress · 2026</span></div>
+            <p class="card-kicker">Ostad</p>
+            <h4>Software Quality Assurance</h4>
+            <p class="cs-desc">My current focus. The course assignment is done: Playwright UI tests on the SauceDemo store and Postman/Newman API tests — 3/3 and 19/19 passed in my recorded run.</p>
+            <ul class="tag-list"><li>Playwright</li><li>Postman</li><li>Newman</li></ul>
+          </article>
+          <article class="cs-card" aria-roledescription="slide" aria-label="2 of 4: Programming Course, Phitron">
+            <div class="cs-top"><span class="cs-mono" aria-hidden="true">PH</span><span class="cs-status done">Completed · 2025</span></div>
+            <p class="card-kicker">Phitron</p>
+            <h4>Programming Course</h4>
+            <p class="cs-desc">Strengthened my programming and problem-solving foundation — the base I use to read code and write automated tests.</p>
+            <ul class="tag-list"><li>Programming</li><li>Problem solving</li></ul>
+          </article>
+          <article class="cs-card" aria-roledescription="slide" aria-label="3 of 4: English Language Course, Saifurs">
+            <div class="cs-top"><span class="cs-mono" aria-hidden="true">SA</span><span class="cs-status done">Completed</span></div>
+            <p class="card-kicker">Saifurs</p>
+            <h4>English Language Course</h4>
+            <p class="cs-desc">Improved my English communication — useful for clear bug reports and working with developers and international teams.</p>
+            <ul class="tag-list"><li>English</li><li>Communication</li></ul>
+          </article>
+          <article class="cs-card" aria-roledescription="slide" aria-label="4 of 4: Spoken English Course, Speakers Council">
+            <div class="cs-top"><span class="cs-mono" aria-hidden="true">SC</span><span class="cs-status done">Certified · 2019</span></div>
+            <p class="card-kicker">Speakers Council</p>
+            <h4>Spoken English Course</h4>
+            <p class="cs-desc">Spoken English certification — built my confidence in speaking and presenting.</p>
+            <ul class="tag-list"><li>Spoken English</li><li>Presentation</li></ul>
+          </article>
+      </div>
+      <div class="cs-controls">
+        <button type="button" class="cs-btn cs-prev" aria-label="Previous course">←</button>
+        <div class="cs-dots" role="group" aria-label="Choose a course"></div>
+        <button type="button" class="cs-btn cs-next" aria-label="Next course">→</button>
+        <button type="button" class="cs-btn cs-pause" aria-label="Pause automatic slide changes">❚❚</button>
+      </div>
+      <p class="sr-only cs-live" aria-live="polite"></p>
+    </section>
   </div>
 </section>
 
@@ -458,7 +500,7 @@ npx newman run postman/reqres-collection.json \
       <p>Now I'm focused on software quality assurance. I write clear test cases, test APIs and automate critical journeys, and I'm looking for an SQA internship or junior QA role where I can learn from an experienced team.</p>
       <dl class="facts">
         <div><dt>Education</dt><dd>B.Sc. in Computer Science &amp; Engineering, Port City International University (2022 – present), CGPA 3.88 / 4.00</dd></div>
-        <div><dt>QA training</dt><dd>Software Quality Assurance course, Ostad (Playwright and Postman/Newman assignment, October 2026)</dd></div>
+        <div><dt>QA training</dt><dd>Software Quality Assurance course, Ostad (in progress; Playwright and Postman/Newman assignment completed October 2026)</dd></div>
         <div><dt>Programming</dt><dd>Phitron programming course (completed 2025)</dd></div>
         <div><dt>Languages</dt><dd>Bangla, English, Hindi (basic)</dd></div>
         <div><dt>Location</dt><dd>Chattogram, Bangladesh</dd></div>
@@ -517,5 +559,6 @@ npx newman run postman/reqres-collection.json \
 
 <script src="config.js"></script>
 <script src="script.js"></script>
+<script src="carousel.js"></script>
 </body>
 </html>
