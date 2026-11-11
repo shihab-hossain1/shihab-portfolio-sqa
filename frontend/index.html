@@ -57,6 +57,7 @@
       <ul>
         <li><a href="#work">QA case studies</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -356,6 +357,28 @@ npx newman run postman/reqres-collection.json \
         <p class="card-status">Arduino Uno · C++ — no public repository</p>
       </article>
     </div>
+
+    <h3 class="subhead" id="research">Research</h3>
+    <div class="research-grid">
+      <article class="mini-card research-card" aria-labelledby="thesis-title">
+        <p class="card-kicker">B.Sc. thesis · <span class="status-done">Completed 2026</span></p>
+        <h4 id="thesis-title">Deep Learning-Based Traffic Accident Detection and Collision Classification from CCTV Videos</h4>
+        <p class="research-meta">Port City International University · with Md. Ibrahim Khalil · supervised by Nusratul Jannat</p>
+        <p>A two-stage system that finds the moment of an accident in CCTV video and classifies the collision type, using two-stream ResNet50 features (appearance + optical flow) with BiGRU and BiLSTM models on the ACCIDENT benchmark. On the official real-video test set it reached <b>50.0% accuracy, above the best published baseline (47.1%)</b>.</p>
+        <p class="card-status">QA angle: evaluated on a locked test set with video-level splits and fixed seeds, so the results are reproducible.</p>
+      </article>
+      <article class="mini-card research-card" aria-labelledby="mh-title">
+        <p class="card-kicker">Conference paper · co-author · <span class="status-review">Under review 2026</span></p>
+        <h4 id="mh-title">Explainable machine learning for mental-health screening with minimal features</h4>
+        <p>A stacking ensemble model, explained with SHAP, that estimates the need for mental-health treatment from large-scale survey data using only a few features. <b>My part:</b> I built the React and FastAPI web application that delivers the screening.</p>
+      </article>
+      <article class="mini-card research-card" aria-labelledby="dc-paper-title">
+        <p class="card-kicker">Conference paper · <span class="status-review">Under review 2026</span></p>
+        <h4 id="dc-paper-title">A web-based diagnostic test booking and report management system</h4>
+        <p>A system paper on DiagnoCare's design: the booking-to-report workflow and role-based access for patients, diagnostic centres and administrators, grounded in digital-health research.</p>
+      </article>
+    </div>
+    <p class="fine">Titles and venues of papers under review will be added after the decision.</p>
   </div>
 </section>
 
