@@ -166,3 +166,4 @@ Vercel and Render redeploy automatically within a minute.
 | Error mentioning **CORS** | `ALLOWED_ORIGINS` on Render must exactly match your Vercel URL (https, no `/` at the end). |
 | Message sent but no email | `RESEND_API_KEY` missing, or Resend account email ≠ `TO_EMAIL`. Check Render → **Logs**. |
 | Vercel shows 404 | Root Directory must be `frontend`. |
+thank you
